@@ -31,29 +31,67 @@ import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class MainActivityTestYananWu {
+public class MainActivityTestYananWu2ndClassActivity {
 
     @Rule
     public ActivityScenarioRule<MainActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
-    public void mainActivityTestYananWu() {
+    public void mainActivityTestYananWu2ndClassActivity() {
+        // Added a sleep statement to match the app's execution delay.
+        // The recommended way to handle such scenarios is to use Espresso idling resources:
+        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
+        try {
+            Thread.sleep(5268);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-
-        ViewInteraction appCompatEditText = onView( withId(R.id.entryId));
+        ViewInteraction appCompatEditText = onView(
+                allOf(withId(R.id.entryId),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                0),
+                        isDisplayed()));
         appCompatEditText.perform(click());
 
-        ViewInteraction appCompatEditText2 = onView(withId(R.id.entryId));
+        ViewInteraction appCompatEditText2 = onView(
+                allOf(withId(R.id.entryId),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                0),
+                        isDisplayed()));
         appCompatEditText2.perform(replaceText("040817691"), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText3 = onView(withId(R.id.entryId));
+        ViewInteraction appCompatEditText3 = onView(
+                allOf(withId(R.id.entryId), withText("040817691"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                0),
+                        isDisplayed()));
         appCompatEditText3.perform(pressImeActionButton());
 
-        ViewInteraction materialButton = onView(withId(R.id.convertButton));
+        ViewInteraction materialButton = onView(
+                allOf(withId(R.id.convertButton), withText("Convert"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                2),
+                        isDisplayed()));
         materialButton.perform(click());
 
-        ViewInteraction button = onView(withId(R.id.convertButton));
+        ViewInteraction button = onView(
+                allOf(withId(R.id.convertButton), withText("CONVERT"),
+                        withParent(withParent(withId(android.R.id.content))),
+                        isDisplayed()));
         button.check(matches(isDisplayed()));
     }
 
