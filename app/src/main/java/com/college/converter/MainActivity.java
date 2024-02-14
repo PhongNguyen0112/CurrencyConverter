@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Button buttonConvert = findViewById(R.id.convertButton);
-        Button buttonConvert = variableBinding.convertButton;
+
 
         Log.i(TAG, "Starting onCreate()");
         Button buttonConvert = findViewById(R.id.convertButton);
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     public void convertCurrency(View view) {
 
 
-        EditText inputView = variableBinding.entryId;
+
 
         Log.i(TAG, "Entering convertCurrency()");
         EditText inputView = findViewById(R.id.entryId);
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
         String inputAmount = inputView.getText().toString();
 
-        TextView resultView = variableBinding.resultId
+        TextView resultView = variableBinding.resultId;
 
 
         if (!inputAmount.isEmpty()) {
