@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         Button buttonConvert = variableBinding.convertButton;
 
         Log.i(TAG, "Starting onCreate()");
-        Button buttonConvert = findViewById(R.id.convertButton);
+
 
 
         buttonConvert.setOnClickListener( view ->  {
@@ -58,12 +58,12 @@ public class MainActivity extends AppCompatActivity {
         EditText inputView = variableBinding.entryId;
 
         Log.i(TAG, "Entering convertCurrency()");
-        EditText inputView = findViewById(R.id.entryId);
+
 
 
         String inputAmount = inputView.getText().toString();
 
-        TextView resultView = variableBinding.resultId
+        TextView resultView = variableBinding.resultId;
 
 
         if (!inputAmount.isEmpty()) {
